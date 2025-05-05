@@ -47,7 +47,7 @@ const DateFilter: React.FC<{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          marginTop: 2,
+          marginTop: 1,
         }}
       >
         <Typography variant="caption" sx={{ color: "gray" }}>

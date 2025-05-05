@@ -25,7 +25,7 @@ export default function FlightSearch() {
     <Box
       sx={{
         display: "flex",
-        gap: 1,
+        gap: 0.5,
         width: "100%",
         marginX: "auto",
         flexDirection: { lg: "row", xs: "column" },
@@ -36,17 +36,19 @@ export default function FlightSearch() {
       <Box
         sx={{
           display: "grid",
-          gap: 1,
+          gap: 0.5,
           width: { lg: "420px" },
         }}
       >
         <AirportSearch
-          icon={<FlightTakeoffIcon sx={{ color: "#2A2E2D", width: "40px" }} />}
+          icon={
+            <FlightTakeoffIcon sx={{ color: "#2A2E2D", fontSize: "34px" }} />
+          }
           value={departureAirport}
           onChange={(airport) => setDepartureAirport(airport)}
         />
         <AirportSearch
-          icon={<FlightLandIcon sx={{ color: "#2A2E2D", width: "40px" }} />}
+          icon={<FlightLandIcon sx={{ color: "#2A2E2D", fontSize: "34px" }} />}
           value={arrivalAirport}
           onChange={(airport) => setArrivalAirport(airport)}
         />
@@ -57,7 +59,7 @@ export default function FlightSearch() {
         sx={{
           display: "grid",
           gridTemplateColumns: "repeat(2, 1fr)",
-          gap: 1,
+          gap: 0.5,
           width: { lg: "420px" },
         }}
       >
@@ -76,7 +78,8 @@ export default function FlightSearch() {
       <Box
         sx={{
           display: "grid",
-          gap: 1,
+          gridTemplateColumns: "repeat(1, 1fr)",
+          gap: 0.5,
           width: { lg: "280px" },
         }}
       >
@@ -84,8 +87,8 @@ export default function FlightSearch() {
           sx={{
             display: "flex",
             alignItems: "center",
-            paddingX: 4,
-            paddingY: 3,
+            paddingX: 2.5,
+            paddingY: 2.8,
             backgroundColor: "white",
             borderRadius: 1,
           }}
@@ -98,8 +101,8 @@ export default function FlightSearch() {
           sx={{
             display: "flex",
             alignItems: "center",
-            paddingX: 4,
-            paddingY: 3,
+            paddingX: 2.5,
+            paddingY: 2.8,
             backgroundColor: "white",
             borderRadius: 1,
           }}

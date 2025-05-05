@@ -57,7 +57,7 @@ const AirportSearch: React.FC<AirportSearchProps> = ({
           sx={{
             backgroundColor: "white",
             fontWeight: "bold",
-            padding: 2.8,
+            padding: 2,
             borderRadius: "4px 0 0 4px",
             display: "flex",
             alignItems: "center",
