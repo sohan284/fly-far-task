@@ -1,7 +1,7 @@
 import React from "react";
 import CarouselHome from "../components/CarouselHome";
 import FlightTypeTab from "../components/FlightTypeTab";
-import SearchHeader from "../components/SearchHeader";
+import SearchHeader from "../shared/SearchHeader";
 import SearchTabs from "../components/CategoryTabs";
 import { Box } from "@mui/material";
 

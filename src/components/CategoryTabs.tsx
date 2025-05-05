@@ -18,8 +18,8 @@ const SearchTabs = () => {
     <Box
       sx={{
         display: 'flex',
-        gap: 2,
-        marginTop: 8,
+        gap: .5,
+        marginTop: 7,
         flexWrap: 'wrap',
         justifyContent: 'flex-start',
       }}
@@ -32,18 +32,20 @@ const SearchTabs = () => {
               backgroundColor: '#E34825',
               color: 'white',
               borderRadius: '5px',
-              paddingX: 4,
-              paddingY: 2,
+              paddingX: 2,
+              paddingY: 1.5,
               display: 'flex',
               alignItems: 'center',
-              gap: 2,
+              gap: 1,
             }}
           >
             {tab.icon}
             <Typography
               component="p"
               sx={{
+                overflow:'wrap',
                 display: 'inline',
+                fontSize: '15px',
               }}
             >
               {tab.label}

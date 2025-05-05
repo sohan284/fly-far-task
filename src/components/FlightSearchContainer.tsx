@@ -3,9 +3,16 @@ import FlightLandIcon from "@mui/icons-material/FlightLand";
 import SearchIcon from "@mui/icons-material/Search";
 import { SlCalender } from "react-icons/sl";
 import { Box, Button, Typography } from "@mui/material";
+import AirportSearch from "./AirportSearch";
+import React from "react";
+
+// Import the Airport type from airports.tsx
+import { Airport } from "../data/airports";
 
 
 export default function FlightSearch() {
+  const [departureAirport, setDepartureAirport] = React.useState<Airport | null>(null);
+  const [arrivalAirport, setArrivalAirport] = React.useState<Airport | null>(null);
   return (
     <Box
       sx={{
@@ -13,6 +20,8 @@ export default function FlightSearch() {
         gap: 1,
         width: "100%",
         marginX: "auto",
+        flexDirection: { lg: "row", xs: "column" },
+        alignItems: "center",
       }}
     >
       {/* Origin Airport */}
@@ -23,50 +32,16 @@ export default function FlightSearch() {
           width: { lg: "420px" },
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            paddingX: 4,
-            paddingY: 3,
-            borderRadius: 1,
-            backgroundColor: "white",
-            flex: 1,
-          }}
-        >
-          <FlightTakeoffIcon sx={{ color: "gray", marginRight: 3 }} fontSize="small" />
-          <Box>
-            <Typography
-              variant="body2"
-              sx={{ color: "#202124", fontWeight: "medium" }}
-            >
-              DAC, Hazrat Sha Jalal Intl Airport
-            </Typography>
-          </Box>
-        </Box>
-
-        {/* Destination Airport */}
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            paddingX: 4,
-            paddingY: 3,
-            borderRadius: 1,
-            backgroundColor: "white",
-            flex: 1,
-          }}
-        >
-          <FlightLandIcon sx={{ color: "gray", marginRight: 3 }} fontSize="small" />
-          <Box>
-            <Typography
-              variant="body2"
-              sx={{ color: "#202124", fontWeight: "medium" }}
-            >
-              DXB, Dubai Intl Airport
-            </Typography>
-          </Box>
-        </Box>
+        <AirportSearch 
+          icon={<FlightTakeoffIcon sx={{ color: "#2A2E2D", width: '40px' }} />} 
+          value={departureAirport}
+          onChange={(airport) => setDepartureAirport(airport)}
+        />
+        <AirportSearch 
+          icon={<FlightLandIcon sx={{ color: "#2A2E2D", width: '40px' }} />} 
+          value={arrivalAirport}
+          onChange={(airport) => setArrivalAirport(airport)}
+        />
       </Box>
 
       {/* Date Selection */}
@@ -75,7 +50,7 @@ export default function FlightSearch() {
           display: "grid",
           gridTemplateColumns: "repeat(2, 1fr)",
           gap: 1,
-          width: { lg: "320px" },
+          width: { lg: "420px" },
         }}
       >
         <Box

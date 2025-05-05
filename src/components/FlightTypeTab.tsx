@@ -2,7 +2,7 @@ import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import FlightSearch from './FlightSearch';
+import FlightSearch from './FlightSearchContainer';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -44,7 +44,7 @@ export default function FlightTypeTab() {
     <Box sx={{ width: '100%' }}>
       <Box
         sx={{
-          marginTop: 10, // Replacing "mt-10"
+          marginTop: 5, // Replacing "mt-10"
           paddingBottom: 5, // Replacing "pb-5"
         }}
       >
@@ -62,6 +62,7 @@ export default function FlightTypeTab() {
             label="One Way"
             {...a11yProps(0)}
             sx={{
+              fontSize: '15px',
               color: value === 0 ? 'white' : 'inherit',
               bgcolor: value === 0 ? '#202124' : 'transparent',
               '&.Mui-selected': {
@@ -74,6 +75,7 @@ export default function FlightTypeTab() {
             label="Round Way"
             {...a11yProps(1)}
             sx={{
+              fontSize: '15px',
               borderRadius: '5px',
               color: value === 1 ? 'white' : 'inherit',
               bgcolor: value === 1 ? '#202124' : 'transparent',
@@ -86,6 +88,7 @@ export default function FlightTypeTab() {
             label="Multi City"
             {...a11yProps(2)}
             sx={{
+              fontSize: '15px',
               borderRadius: '5px',
               color: value === 2 ? 'white' : 'inherit',
               bgcolor: value === 2 ? '#202124' : 'transparent',
