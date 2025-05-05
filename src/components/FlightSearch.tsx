@@ -1,0 +1,200 @@
+import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
+import FlightLandIcon from "@mui/icons-material/FlightLand";
+import SearchIcon from "@mui/icons-material/Search";
+import { SlCalender } from "react-icons/sl";
+import { Box, Button, Typography } from "@mui/material";
+
+
+export default function FlightSearch() {
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        gap: 1,
+        width: "100%",
+        marginX: "auto",
+      }}
+    >
+      {/* Origin Airport */}
+      <Box
+        sx={{
+          display: "grid",
+          gap: 1,
+          width: { lg: "420px" },
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            paddingX: 4,
+            paddingY: 3,
+            borderRadius: 1,
+            backgroundColor: "white",
+            flex: 1,
+          }}
+        >
+          <FlightTakeoffIcon sx={{ color: "gray", marginRight: 3 }} fontSize="small" />
+          <Box>
+            <Typography
+              variant="body2"
+              sx={{ color: "#202124", fontWeight: "medium" }}
+            >
+              DAC, Hazrat Sha Jalal Intl Airport
+            </Typography>
+          </Box>
+        </Box>
+
+        {/* Destination Airport */}
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            paddingX: 4,
+            paddingY: 3,
+            borderRadius: 1,
+            backgroundColor: "white",
+            flex: 1,
+          }}
+        >
+          <FlightLandIcon sx={{ color: "gray", marginRight: 3 }} fontSize="small" />
+          <Box>
+            <Typography
+              variant="body2"
+              sx={{ color: "#202124", fontWeight: "medium" }}
+            >
+              DXB, Dubai Intl Airport
+            </Typography>
+          </Box>
+        </Box>
+      </Box>
+
+      {/* Date Selection */}
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: "repeat(2, 1fr)",
+          gap: 1,
+          width: { lg: "320px" },
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            gap: 2,
+            paddingX: 2,
+            paddingY: 2,
+            backgroundColor: "white",
+            borderRadius: 1,
+          }}
+        >
+          <SlCalender size={24} />
+          <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", marginTop: 2 }}>
+            <Typography variant="caption" sx={{ color: "gray" }}>
+              August
+            </Typography>
+            <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+              <Typography
+                variant="h3"
+                sx={{ lineHeight: "none", color: "#202124", fontWeight: "bold" }}
+              >
+                22
+              </Typography>
+              <Typography variant="caption" sx={{ color: "gray" }}>
+                Tuesday
+              </Typography>
+            </Box>
+          </Box>
+        </Box>
+
+        {/* Return Flight Option */}
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            paddingX: 2,
+            paddingY: 2,
+            backgroundColor: "white",
+            borderRadius: 1,
+          }}
+        >
+          <SlCalender size={24} />
+          <Box sx={{ marginTop: 3 }}>
+            <Typography variant="caption" sx={{ color: "gray" }}>
+              Click to Return <br /> Flight
+            </Typography>
+          </Box>
+        </Box>
+      </Box>
+
+      {/* Economy Class and Passenger Count */}
+      <Box
+        sx={{
+          display: "grid",
+          gap: 1,
+          width: { lg: "280px" },
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            paddingX: 4,
+            paddingY: 3,
+            backgroundColor: "white",
+            borderRadius: 1,
+          }}
+        >
+          <Typography variant="body2" sx={{ color: "gray" }}>
+            Economy
+          </Typography>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            paddingX: 4,
+            paddingY: 3,
+            backgroundColor: "white",
+            borderRadius: 1,
+          }}
+        >
+          <Typography variant="body2" sx={{ color: "gray" }}>
+            1 Passenger
+          </Typography>
+        </Box>
+      </Box>
+
+      {/* Search Button */}
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          borderRadius: 1,
+          backgroundColor: "#2A2E2D",
+          "&:hover": { opacity: 0.9 },
+          width: { lg: "134px" },
+          cursor: "pointer",
+        }}
+      >
+        <Button
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "100%",
+            width: "100%",
+            color: "white",
+          }}
+        >
+          <SearchIcon fontSize="large" />
+          <Typography variant="body2" sx={{ marginLeft: 2, fontWeight: "medium" }}>
+            Search
+          </Typography>
+        </Button>
+      </Box>
+    </Box>
+  );
+}
