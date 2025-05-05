@@ -8,16 +8,7 @@ import slider5 from "../assets/sliderimg5.webp";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Box } from "@mui/material";
-
-// Add this declaration to handle image imports
 export {};
-
-declare global {
-  declare module "*.webp" {
-    const content: string;
-    export default content;
-  }
-}
 
 export default function CarouselHome() {
   const sliderRef = useRef<Slider | null>(null);

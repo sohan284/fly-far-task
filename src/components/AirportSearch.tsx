@@ -91,7 +91,8 @@ const AirportSearch: React.FC<AirportSearchProps> = ({
             zIndex: 10,
             width: "100%",
             marginTop: 1,
-            backgroundColor: "#E34825",
+            backgroundColor: "white",
+            color: "#E34825",
             boxShadow: 3,
             border: "1px solid #ccc",
             maxHeight: "240px",
@@ -116,13 +117,13 @@ const AirportSearch: React.FC<AirportSearchProps> = ({
                   },
                 },
                 "& .MuiInputBase-input": {
-                  color: "#32d095",
+                  color: "#E34825",
                   fontSize: "14px",
                 },
               }}
             />
           </Box>
-          <Box sx={{ paddingY: 1, backgroundColor: "#E34825" }}>
+          <Box sx={{ backgroundColor: "#E34825" }}>
             {filteredAirports.map((airport) => (
               <MenuItem
                 key={airport.code}
@@ -133,8 +134,11 @@ const AirportSearch: React.FC<AirportSearchProps> = ({
                 sx={{
                   paddingX: 2,
                   paddingY: 1,
+                  backgroundColor: "white",
+                  color: "#E34825",
                   "&:hover": {
-                    backgroundColor: "#525371",
+                    color: "white",
+                    backgroundColor: "#ececec",
                   },
                   cursor: "pointer",
                 }}
@@ -142,11 +146,11 @@ const AirportSearch: React.FC<AirportSearchProps> = ({
                 <Box>
                   <Typography
                     variant="body2"
-                    sx={{ fontWeight: "medium", color: "#e0e0e0" }}
+                    sx={{ fontWeight: "medium", color: "#E34825" }}
                   >
                     {airport.name}
                   </Typography>
-                  <Typography variant="caption" sx={{ color: "white" }}>
+                  <Typography variant="caption" sx={{ color: "#E34825" }}>
                     {airport.city}, {airport.country}
                   </Typography>
                 </Box>

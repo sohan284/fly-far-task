@@ -1,13 +1,13 @@
 import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import FlightLandIcon from "@mui/icons-material/FlightLand";
 import SearchIcon from "@mui/icons-material/Search";
-import { SlCalender } from "react-icons/sl";
 import { Box, Button, Typography } from "@mui/material";
 import AirportSearch from "./AirportSearch";
-import React from "react";
+import React, { useState } from "react";
 
 // Import the Airport type from airports.tsx
 import { Airport } from "../data/airports";
+import DateFilter from "./DateFilter";
 
 export default function FlightSearch() {
   const [departureAirport, setDepartureAirport] =
@@ -15,6 +15,12 @@ export default function FlightSearch() {
   const [arrivalAirport, setArrivalAirport] = React.useState<Airport | null>(
     null
   );
+
+  const [departureDate, setDepatureDate] = useState<Date | null>(
+    new Date(2023, 7, 22)
+  );
+  const [returnDate, setReturnDate] = useState<Date | null>(null);
+
   return (
     <Box
       sx={{
@@ -55,70 +61,15 @@ export default function FlightSearch() {
           width: { lg: "420px" },
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            gap: 2,
-            paddingX: 2,
-            paddingY: 2,
-            backgroundColor: "white",
-            borderRadius: 1,
-          }}
-        >
-          <SlCalender size={24} />
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              marginTop: 2,
-            }}
-          >
-            <Typography variant="caption" sx={{ color: "gray" }}>
-              August
-            </Typography>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <Typography
-                variant="h3"
-                sx={{
-                  lineHeight: "none",
-                  color: "#202124",
-                  fontWeight: "bold",
-                }}
-              >
-                22
-              </Typography>
-              <Typography variant="caption" sx={{ color: "gray" }}>
-                Tuesday
-              </Typography>
-            </Box>
-          </Box>
-        </Box>
-
-        {/* Return Flight Option */}
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            paddingX: 2,
-            paddingY: 2,
-            backgroundColor: "white",
-            borderRadius: 1,
-          }}
-        >
-          <SlCalender size={24} />
-          <Box sx={{ marginTop: 3 }}>
-            <Typography variant="caption" sx={{ color: "gray" }}>
-              Click to Return <br /> Flight
-            </Typography>
-          </Box>
-        </Box>
+        <DateFilter
+          selectedDate={departureDate}
+          setSelectedDate={setDepatureDate}
+        />
+        <DateFilter
+          selectedDate={returnDate}
+          setSelectedDate={setReturnDate}
+          isReturnFlight={true}
+        />
       </Box>
 
       {/* Economy Class and Passenger Count */}
@@ -181,6 +132,8 @@ export default function FlightSearch() {
             height: "100%",
             width: "100%",
             color: "white",
+            paddingX: 2,
+            paddingY: 5.5,
           }}
         >
           <SearchIcon fontSize="large" />
