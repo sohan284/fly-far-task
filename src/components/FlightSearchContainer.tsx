@@ -9,10 +9,12 @@ import React from "react";
 // Import the Airport type from airports.tsx
 import { Airport } from "../data/airports";
 
-
 export default function FlightSearch() {
-  const [departureAirport, setDepartureAirport] = React.useState<Airport | null>(null);
-  const [arrivalAirport, setArrivalAirport] = React.useState<Airport | null>(null);
+  const [departureAirport, setDepartureAirport] =
+    React.useState<Airport | null>(null);
+  const [arrivalAirport, setArrivalAirport] = React.useState<Airport | null>(
+    null
+  );
   return (
     <Box
       sx={{
@@ -32,13 +34,13 @@ export default function FlightSearch() {
           width: { lg: "420px" },
         }}
       >
-        <AirportSearch 
-          icon={<FlightTakeoffIcon sx={{ color: "#2A2E2D", width: '40px' }} />} 
+        <AirportSearch
+          icon={<FlightTakeoffIcon sx={{ color: "#2A2E2D", width: "40px" }} />}
           value={departureAirport}
           onChange={(airport) => setDepartureAirport(airport)}
         />
-        <AirportSearch 
-          icon={<FlightLandIcon sx={{ color: "#2A2E2D", width: '40px' }} />} 
+        <AirportSearch
+          icon={<FlightLandIcon sx={{ color: "#2A2E2D", width: "40px" }} />}
           value={arrivalAirport}
           onChange={(airport) => setArrivalAirport(airport)}
         />
@@ -64,14 +66,31 @@ export default function FlightSearch() {
           }}
         >
           <SlCalender size={24} />
-          <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", marginTop: 2 }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              marginTop: 2,
+            }}
+          >
             <Typography variant="caption" sx={{ color: "gray" }}>
               August
             </Typography>
-            <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
               <Typography
                 variant="h3"
-                sx={{ lineHeight: "none", color: "#202124", fontWeight: "bold" }}
+                sx={{
+                  lineHeight: "none",
+                  color: "#202124",
+                  fontWeight: "bold",
+                }}
               >
                 22
               </Typography>
@@ -165,7 +184,10 @@ export default function FlightSearch() {
           }}
         >
           <SearchIcon fontSize="large" />
-          <Typography variant="body2" sx={{ marginLeft: 2, fontWeight: "medium" }}>
+          <Typography
+            variant="body2"
+            sx={{ marginLeft: 2, fontWeight: "medium" }}
+          >
             Search
           </Typography>
         </Button>

@@ -39,8 +39,10 @@ const AirportSearch: React.FC<AirportSearchProps> = ({
   }, []);
 
   return (
-    <Box ref={wrapperRef} sx={{ position: "relative" , width: "100%" , height: "100%" }}>
-
+    <Box
+      ref={wrapperRef}
+      sx={{ position: "relative", width: "100%", height: "100%" }}
+    >
       <Box
         sx={{
           backgroundColor: "white",
@@ -55,14 +57,14 @@ const AirportSearch: React.FC<AirportSearchProps> = ({
           sx={{
             backgroundColor: "white",
             fontWeight: "bold",
-            padding: 2.5,
+            padding: 2.8,
             borderRadius: "4px 0 0 4px",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
           }}
         >
-            {icon}
+          {icon}
         </Box>
         <Typography
           variant="body2"
@@ -77,7 +79,9 @@ const AirportSearch: React.FC<AirportSearchProps> = ({
             textOverflow: "ellipsis",
           }}
         >
-          {value ? `${value.name} (${value.code})` : "DAC, Hazrat Sha Jalal Intl Airport"}
+          {value
+            ? `${value.name} (${value.code})`
+            : "DAC, Hazrat Sha Jalal Intl Airport"}
         </Typography>
       </Box>
       {isOpen && (
@@ -142,10 +146,7 @@ const AirportSearch: React.FC<AirportSearchProps> = ({
                   >
                     {airport.name}
                   </Typography>
-                  <Typography
-                    variant="caption"
-                    sx={{ color: "white" }}
-                  >
+                  <Typography variant="caption" sx={{ color: "white" }}>
                     {airport.city}, {airport.country}
                   </Typography>
                 </Box>

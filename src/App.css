@@ -1,5 +1,4 @@
-body{
-  
+body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 10px;
@@ -7,13 +6,6 @@ body{
   color: #202124;
   max-width: 1180px;
   margin: auto;
-}
-.marquee-container {
-  overflow: hidden;
-}
-
-.marquee-text {
-  animation: marquee 20s linear infinite;
 }
 
 @keyframes marquee {

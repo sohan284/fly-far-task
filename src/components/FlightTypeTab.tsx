@@ -1,8 +1,8 @@
-import * as React from 'react';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Box from '@mui/material/Box';
-import FlightSearch from './FlightSearchContainer';
+import * as React from "react";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Box from "@mui/material/Box";
+import FlightSearch from "./FlightSearchContainer";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -29,7 +29,7 @@ function CustomTabPanel(props: TabPanelProps) {
 function a11yProps(index: number) {
   return {
     id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
   };
 }
 
@@ -41,7 +41,7 @@ export default function FlightTypeTab() {
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: "100%" }}>
       <Box
         sx={{
           marginTop: 5, // Replacing "mt-10"
@@ -53,8 +53,8 @@ export default function FlightTypeTab() {
           onChange={handleChange}
           aria-label="basic tabs example"
           sx={{
-            '& .MuiTabs-indicator': {
-              display: 'none', // Removes the bottom border/indicator
+            "& .MuiTabs-indicator": {
+              display: "none", // Removes the bottom border/indicator
             },
           }}
         >
@@ -62,25 +62,29 @@ export default function FlightTypeTab() {
             label="One Way"
             {...a11yProps(0)}
             sx={{
-              fontSize: '15px',
-              color: value === 0 ? 'white' : 'inherit',
-              bgcolor: value === 0 ? '#202124' : 'transparent',
-              '&.Mui-selected': {
-                color: 'white',
+              fontSize: "15px",
+              color: value === 0 ? "white" : "inherit",
+              bgcolor: value === 0 ? "#202124" : "transparent",
+              "&.Mui-selected": {
+                color: "white",
               },
-              borderRadius: '5px',
+              borderRadius: "5px",
+              textTransform: "capitalize",
+              fontWeight: "bold",
             }}
           />
           <Tab
             label="Round Way"
             {...a11yProps(1)}
             sx={{
-              fontSize: '15px',
-              borderRadius: '5px',
-              color: value === 1 ? 'white' : 'inherit',
-              bgcolor: value === 1 ? '#202124' : 'transparent',
-              '&.Mui-selected': {
-                color: 'white',
+              fontSize: "15px",
+              borderRadius: "5px",
+              color: value === 1 ? "white" : "inherit",
+              textTransform: "capitalize",
+              fontWeight: "bold",
+              bgcolor: value === 1 ? "#202124" : "transparent",
+              "&.Mui-selected": {
+                color: "white",
               },
             }}
           />
@@ -88,12 +92,14 @@ export default function FlightTypeTab() {
             label="Multi City"
             {...a11yProps(2)}
             sx={{
-              fontSize: '15px',
-              borderRadius: '5px',
-              color: value === 2 ? 'white' : 'inherit',
-              bgcolor: value === 2 ? '#202124' : 'transparent',
-              '&.Mui-selected': {
-                color: 'white',
+              fontSize: "15px",
+              borderRadius: "5px",
+              color: value === 2 ? "white" : "inherit",
+              bgcolor: value === 2 ? "#202124" : "transparent",
+              textTransform: "capitalize",
+              fontWeight: "bold",
+              "&.Mui-selected": {
+                color: "white",
               },
             }}
           />
