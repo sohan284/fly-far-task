@@ -17,15 +17,48 @@ import { useNavigate } from "react-router-dom";
 export default function FlightSearch() {
   const navigate = useNavigate();
   const [departureAirport, setDepartureAirport] =
-    React.useState<Airport | null>(null);
+    React.useState<Airport | null>({
+      "code": "DAC",
+      "name": "Hazrat Shahjalal Intl Airport",
+      "cityName": "Dhaka",
+      "countryName": "BANGLADESH"
+  });
   const [arrivalAirport, setArrivalAirport] = React.useState<Airport | null>(
-    null
+    {
+      "code": "CXB",
+      "name": "COX's Bazar Airport",
+      "cityName": "Cox's Bazar",
+      "countryName": "BANGLADESH"
+  }
   );
   
   const [departureDate, setDepatureDate] = useState<Date | null>(new Date());
   const [returnDate, setReturnDate] = useState<Date | null>(null);
+console.log(departureAirport , arrivalAirport);
 
   const handleFlightSearch = () =>{
+    const searchData = {
+      passengers: [
+        { type: "ADT", count: 1, ages: [] },
+        { type: "CNN", count: 0, ages: [] },
+        { type: "INF", count: 0, ages: [] },
+      ],
+      cabin: "Economy",
+      tripType: "oneway",
+      vendorPref: [],
+      studentFare: false,
+      umrahFare: false,
+      seamanFare: false,
+      segmentsList: [
+        { departure: departureAirport?.code, arrival: arrivalAirport?.code, departureDate: departureDate?.toISOString().split("T")[0] },
+      ],
+      advanceSearch: false,
+      classes: [],
+      paxDetails: [],
+      bookingId: "",
+    };
+    localStorage.setItem("flightSearchData", JSON.stringify(searchData))
+    
    navigate("/flight-search")
   }
   return (

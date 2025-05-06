@@ -1,13 +1,30 @@
 import { Box, Button, Typography } from "@mui/material";
-import React from "react";
 import airline from "../../assets/airline.png";
 import ErrorIcon from "@mui/icons-material/Error";
 import LuggageIcon from "@mui/icons-material/Luggage";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-const FlightCard = ({ flight }) => {
-  const flightCity = flight.cityCount[0][0];
-  console.log(flight);
+interface Flight {
+  carrierName: string;
+  carrier: string;
+  cityCount: {
+    departureCityCode: string;
+    departureTime: string;
+    departureCityName: string;
+    totalFlightDuration: string;
+    hiddenStops?: string[];
+    arrivalCityCode: string;
+    arrivalTime: string;
+    arrivalCityName: string;
+  }[][];
+  isRefundable: string;
+  baggage: {
+    baggage: string;
+  }[][];
+  totalBasePrice: number;
+}
 
+const FlightCard = ({ flight }: { flight: Flight }) => {
+  const flightCity = flight.cityCount[0][0];
   return (
     <Box
       sx={{
