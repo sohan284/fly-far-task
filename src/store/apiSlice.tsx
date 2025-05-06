@@ -5,7 +5,7 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "https://flyfar-int-v2-user-panel.de.r.appspot.com/api/v1",
     prepareHeaders: (headers) => {
-      const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ0MGU4MzEyNDMyMDRiN2ZiN2NiYzJiM2NmYzk0ZWExIiwiZW1haWwiOiJhZnJpZGlAZmx5ZmFyLnRlY2giLCJwaG9uZU51bWJlciI6Ijg4MDEzMjI5MDMyOTgiLCJzZXNzaW9uSWQiOiJlYnhRb2RZVExUcWpkdDhYM0dMZmpXdWNUVnFIWmZTWiIsImlhdCI6MTc0MTIzMjQxNCwiZXhwIjoxNzQxOTIzNjE0fQ.EAWGrM0WbXngTDaatnl9bsTvFKrBq3NVzEaos_PuYRo' 
+      const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYxYjQ1OGE5LWQwY2ItNDExMS05OWI5LTU3ZTY1N2E2MDg1OCIsImVtYWlsIjoiZGV2QGZseWZhci50ZWNoIiwicGhvbmVOdW1iZXIiOiI4ODAxMzIyOTAzMjk4Iiwic2Vzc2lvbklkIjoibEhacUo3ejdHRzZFSzRxejd4VlVpWWQ2czFwSVkwa3MiLCJpYXQiOjE3NDYyNDcxMTIsImV4cCI6MTc0NjkzODMxMn0.BurcFRXFcGPobguAtUYgOZKRK5PZIqQEnLpfcnY1U_w' 
       if (token) {
         headers.set("Authorization", `Bearer ${token}`); 
       }
@@ -15,7 +15,7 @@ export const apiSlice = createApi({
   }),
   endpoints: (builder) => ({
     getAirports: builder.query({
-      query: () => "/admin/airports/search-suggestion",
+      query: () => "/user/air-search",
     }),
     searchAirports: builder.mutation({
       query: (searchTerm) => ({
@@ -24,7 +24,14 @@ export const apiSlice = createApi({
         body: { keyword: searchTerm }, // Pass the search term in the body
       }),
     }),
+    searchFlights: builder.mutation({
+      query: (data) => ({
+        url: "/user/air-search",
+        method: "POST",
+        body:  data , // Pass the search term in the body
+      }),
+    }),
   }),
 });
 
-export const { useGetAirportsQuery, useSearchAirportsMutation } = apiSlice;
+export const { useGetAirportsQuery, useSearchAirportsMutation ,useSearchFlightsMutation } = apiSlice;

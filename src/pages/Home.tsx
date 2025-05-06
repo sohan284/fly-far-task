@@ -7,13 +7,7 @@ import { Box } from "@mui/material";
 
 const Home = () => {
   return (
-    <Box
-      sx={{
-        width: { xs: "90vw", lg: "1180px" },
-        marginX: "auto",
-        marginTop: 2,
-      }}
-    >
+    <Box>
       <SearchHeader />
       <CategoryTabs />
       <FlightTypeTab />

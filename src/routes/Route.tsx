@@ -3,6 +3,7 @@ import {
 } from "react-router-dom";
 import Home from "../pages/Home.js";
 import Layout from "../layout/Layout.js";
+import AirSearch from "../pages/FlightSearch.js";
 
 export const router = createBrowserRouter([
     {
@@ -12,6 +13,10 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home />
+            },
+            {
+                path: '/flight-search',
+                element:<AirSearch/>
             }
         ]
     },

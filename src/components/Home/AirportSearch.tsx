@@ -13,7 +13,7 @@ interface AirportSearchProps {
 export interface Airport {
   code: string;
   name: string;
-  cityName: string; // Added cityName property
+  cityName: string; 
   countryName: string;
 }
 const AirportSearch: React.FC<AirportSearchProps> = ({
@@ -31,6 +31,7 @@ const AirportSearch: React.FC<AirportSearchProps> = ({
       name: string;
       cityName: string;
       countryName: string;
+      cityCode: string; 
     };
   }
   
@@ -204,7 +205,7 @@ const AirportSearch: React.FC<AirportSearchProps> = ({
                 onClick={() => {
                   // Transform the API result to match the expected Airport type
                   const airportData: Airport = {
-                    code: airport.code,
+                    code: airport?.result.cityCode,
                     name: airport.result.name,
                     cityName: airport.result.cityName,
                     countryName: airport.result.countryName

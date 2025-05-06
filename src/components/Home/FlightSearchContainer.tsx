@@ -12,18 +12,22 @@ export interface Airport {
   countryName: string;
 }
 import Calender from "././Calender";
+import { useNavigate } from "react-router-dom";
 
 export default function FlightSearch() {
+  const navigate = useNavigate();
   const [departureAirport, setDepartureAirport] =
     React.useState<Airport | null>(null);
   const [arrivalAirport, setArrivalAirport] = React.useState<Airport | null>(
     null
   );
-console.log(departureAirport, arrivalAirport);
-
+  
   const [departureDate, setDepatureDate] = useState<Date | null>(new Date());
   const [returnDate, setReturnDate] = useState<Date | null>(null);
 
+  const handleFlightSearch = () =>{
+   navigate("/flight-search")
+  }
   return (
     <Box
       sx={{
@@ -130,6 +134,7 @@ console.log(departureAirport, arrivalAirport);
         }}
       >
         <Button
+        onClick={() => handleFlightSearch()}
           sx={{
             display: "flex",
             flexDirection: "column",
