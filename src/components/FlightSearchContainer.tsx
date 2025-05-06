@@ -23,7 +23,7 @@ export default function FlightSearch() {
     <Box
       sx={{
         display: "flex",
-        gap: 0.5,
+        gap: '5px',
         width: "100%",
         marginX: "auto",
         flexDirection: { lg: "row", xs: "column" },
@@ -34,7 +34,7 @@ export default function FlightSearch() {
       <Box
         sx={{
           display: "grid",
-          gap: 0.5,
+          gap: '5px',
           width: { lg: "420px" },
         }}
       >
@@ -57,8 +57,8 @@ export default function FlightSearch() {
         sx={{
           display: "grid",
           gridTemplateColumns: "repeat(2, 1fr)",
-          gap: 0.5,
-          width: { lg: "420px" },
+          gap: '5px',
+          width: { xs: "85vw", lg: "420px" },
         }}
       >
         <Calender
@@ -77,8 +77,8 @@ export default function FlightSearch() {
         sx={{
           display: "grid",
           gridTemplateColumns: "repeat(1, 1fr)",
-          gap: 0.5,
-          width: { lg: "280px" },
+          gap: '5px',
+          width: { xs: "85vw", lg: "280px" },
         }}
       >
         <Box
@@ -120,7 +120,7 @@ export default function FlightSearch() {
           borderRadius: 1,
           backgroundColor: "#2A2E2D",
           "&:hover": { opacity: 0.9 },
-          width: { lg: "134px" },
+          width: { xs: "85vw", lg: "134px" },
           cursor: "pointer",
         }}
       >
@@ -133,8 +133,8 @@ export default function FlightSearch() {
             height: "100%",
             width: "100%",
             color: "white",
-            paddingX: 2,
-            paddingY: 5.5,
+            paddingX: 4,
+            paddingY: 5,
           }}
         >
           <SearchIcon fontSize="large" />

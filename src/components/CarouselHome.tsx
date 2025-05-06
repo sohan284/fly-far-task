@@ -58,7 +58,7 @@ export default function CarouselHome() {
         position: "relative",
         marginY: 10, // Replacing "my-10"
         marginX: "auto", // Replacing "mx-auto"
-        maxWidth: "100%",
+        width: { xs: "85vw", lg: "100%" },
       }}
     >
       <Slider ref={sliderRef} {...settings}>

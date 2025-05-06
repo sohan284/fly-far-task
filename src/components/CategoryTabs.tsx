@@ -24,7 +24,7 @@ const SearchTabs = () => {
         gap: 0.5,
         marginTop: 7,
         flexWrap: "wrap",
-        justifyContent: "flex-start",
+        justifyContent: { xs: "center", lg: "flex-start" },
       }}
     >
       {/* Tabs container */}

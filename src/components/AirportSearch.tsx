@@ -41,7 +41,11 @@ const AirportSearch: React.FC<AirportSearchProps> = ({
   return (
     <Box
       ref={wrapperRef}
-      sx={{ position: "relative", width: "100%", height: "100%" }}
+      sx={{
+        position: "relative",
+        width: { xs: "85vw", lg: "420px" },
+        height: "100%",
+      }}
     >
       <Box
         sx={{

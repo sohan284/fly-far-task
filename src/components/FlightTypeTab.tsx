@@ -41,11 +41,16 @@ export default function FlightTypeTab() {
   };
 
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={{ width: "100%"}}>
       <Box
         sx={{
-          marginTop: 5, // Replacing "mt-10"
-          paddingBottom: 5, // Replacing "pb-5"
+          marginTop: 5,
+          paddingBottom: 3, 
+          width: { xs: "90vw", lg: "420px" },
+          display: "flex", 
+          justifyContent: { xs: "center", lg: "flex-start" }, 
+          alignItems: "center", 
+          marginX: { xs: "auto", lg: 0 },
         }}
       >
         <Tabs
