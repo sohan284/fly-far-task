@@ -1,10 +1,10 @@
 import React, { useRef } from "react";
 import Slider from "react-slick";
-import slider1 from "../assets/sliderimg1.webp";
-import slider2 from "../assets/sliderimg2.webp";
-import slider3 from "../assets/sliderimg3.webp";
-import slider4 from "../assets/sliderimg4.webp";
-import slider5 from "../assets/sliderimg5.webp";
+import slider1 from "../../assets/sliderimg1.webp";
+import slider2 from "../../assets/sliderimg2.webp";
+import slider3 from "../../assets/sliderimg3.webp";
+import slider4 from "../../assets/sliderimg4.webp";
+import slider5 from "../../assets/sliderimg5.webp";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Box } from "@mui/material";

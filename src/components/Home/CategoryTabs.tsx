@@ -4,7 +4,7 @@ import DomainIcon from "@mui/icons-material/Domain";
 import TravelExploreSharpIcon from "@mui/icons-material/TravelExploreSharp";
 import { Box, Typography } from "@mui/material";
 
-const SearchTabs = () => {
+const CategoryTabs = () => {
   const tabs = [
     {
       label: "Air Ticket",
@@ -15,7 +15,7 @@ const SearchTabs = () => {
     { label: "PNR Share", icon: <TravelExploreSharpIcon /> },
     { label: "Group Fare", icon: <TravelExploreSharpIcon /> },
     { label: "Visa", icon: <TravelExploreSharpIcon /> },
-  ];
+  ]; 
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -72,4 +72,4 @@ const SearchTabs = () => {
   );
 };
 
-export default SearchTabs;
+export default CategoryTabs;

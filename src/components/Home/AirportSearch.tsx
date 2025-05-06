@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Airport, airports } from "../data/airports";
+import { Airport, airports } from "../../data/airports";
 import { Box, Typography, TextField, MenuItem } from "@mui/material";
 
 interface AirportSearchProps {
@@ -9,7 +9,7 @@ interface AirportSearchProps {
 }
 
 const AirportSearch: React.FC<AirportSearchProps> = ({
-  value,
+  value, 
   onChange,
   icon,
 }) => {

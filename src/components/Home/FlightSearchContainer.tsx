@@ -2,12 +2,12 @@ import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import FlightLandIcon from "@mui/icons-material/FlightLand";
 import SearchIcon from "@mui/icons-material/Search";
 import { Box, Button, Typography } from "@mui/material";
-import AirportSearch from "./AirportSearch";
+import AirportSearch from "././AirportSearch";
 import React, { useState } from "react";
 
 // Import the Airport type from airports.tsx
-import { Airport } from "../data/airports";
-import Calender from "./Calender";
+import { Airport } from "../../data/airports";
+import Calender from "././Calender";
 
 export default function FlightSearch() {
   const [departureAirport, setDepartureAirport] =
