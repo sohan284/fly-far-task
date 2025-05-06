@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AirplanemodeActiveIcon from "@mui/icons-material/AirplanemodeActive";
 import DomainIcon from "@mui/icons-material/Domain";
 import TravelExploreSharpIcon from "@mui/icons-material/TravelExploreSharp";
@@ -16,6 +16,18 @@ const SearchTabs = () => {
     { label: "Group Fare", icon: <TravelExploreSharpIcon /> },
     { label: "Visa", icon: <TravelExploreSharpIcon /> },
   ];
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 600);
+    };
+
+    handleResize(); 
+    window.addEventListener("resize", handleResize); 
+    return () => {
+      window.removeEventListener("resize", handleResize);  };
+  }, []);
 
   return (
     <Box
@@ -28,7 +40,7 @@ const SearchTabs = () => {
       }}
     >
       {/* Tabs container */}
-      {tabs?.map((tab, index) => (
+      {tabs?.slice(0,isMobile? 3 : tabs.length).map((tab, index) => (
         <Box key={index}>
           <Box
             sx={{

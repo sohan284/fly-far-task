@@ -41,7 +41,7 @@ export default function FlightTypeTab() {
   };
 
   return (
-    <Box sx={{ width: "100%"}}>
+    <Box sx={{ width: "100%"  }}>
       <Box
         sx={{
           marginTop: 5,

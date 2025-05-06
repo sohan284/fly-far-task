@@ -14,7 +14,7 @@ const Home = () => {
         marginTop: 2,
       }}
     >
-      <SearchHeader />
+      {/* <SearchHeader /> */}
       <SearchTabs />
       <FlightTypeTab />
       <CarouselHome />
