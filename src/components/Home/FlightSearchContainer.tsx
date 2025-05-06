@@ -5,8 +5,12 @@ import { Box, Button, Typography } from "@mui/material";
 import AirportSearch from "././AirportSearch";
 import React, { useState } from "react";
 
-// Import the Airport type from airports.tsx
-import { Airport } from "../../data/airports";
+export interface Airport {
+  code: string;
+  name: string;
+  cityName: string;
+  countryName: string;
+}
 import Calender from "././Calender";
 
 export default function FlightSearch() {
@@ -15,6 +19,7 @@ export default function FlightSearch() {
   const [arrivalAirport, setArrivalAirport] = React.useState<Airport | null>(
     null
   );
+console.log(departureAirport, arrivalAirport);
 
   const [departureDate, setDepatureDate] = useState<Date | null>(new Date());
   const [returnDate, setReturnDate] = useState<Date | null>(null);
@@ -43,12 +48,12 @@ export default function FlightSearch() {
             <FlightTakeoffIcon sx={{ color: "#2A2E2D", fontSize: "34px" }} />
           }
           value={departureAirport}
-          onChange={(airport) => setDepartureAirport(airport)}
+          onChange={(airport: Airport) => setDepartureAirport(airport)}
         />
         <AirportSearch
           icon={<FlightLandIcon sx={{ color: "#2A2E2D", fontSize: "34px" }} />}
           value={arrivalAirport}
-          onChange={(airport) => setArrivalAirport(airport)}
+          onChange={(airport: Airport) => setArrivalAirport(airport)}
         />
       </Box>
 

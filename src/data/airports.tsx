@@ -3,6 +3,8 @@ export interface Airport {
     name: string;
     city: string;
     country: string;
+    cityName?: string;
+    countryName?: string; 
   }
   
   export const airports: Airport[] = [

@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <Box
       sx={{
-        maxWidth: "1180px",
+        width: { xs: "90vw", lg: "1180px" },
         marginX: "auto",
         marginTop: 2,
       }}

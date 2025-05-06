@@ -1,13 +1,21 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Airport, airports } from "../../data/airports";
-import { Box, Typography, TextField, MenuItem } from "@mui/material";
+import { Box, Typography, TextField, MenuItem, CircularProgress } from "@mui/material";
+import { useSearchAirportsMutation } from "../../store/apiSlice";
+
+// Import the shared Airport type instead of defining it locally
+// import { Airport } from "../../types/Airport";
 
 interface AirportSearchProps {
   value: Airport | null;
   onChange: (airport: Airport) => void;
   icon?: React.ReactNode; // Optional icon property
 }
-
+export interface Airport {
+  code: string;
+  name: string;
+  cityName: string; // Added cityName property
+  countryName: string;
+}
 const AirportSearch: React.FC<AirportSearchProps> = ({
   value, 
   onChange,
@@ -16,13 +24,35 @@ const AirportSearch: React.FC<AirportSearchProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const wrapperRef = useRef<HTMLDivElement>(null);
-
-  const filteredAirports = airports.filter(
-    (airport) =>
-      airport.code.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      airport.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      airport.city.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  
+  interface AirportResult {
+    code: string;
+    result: {
+      name: string;
+      cityName: string;
+      countryName: string;
+    };
+  }
+  
+  const [airportSearchData, setAirportSearchData] = useState<AirportResult[]>([]);
+  const [searchAirports, { isLoading, isError }] =
+    useSearchAirportsMutation();
+  
+  const handleSearch = async (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): Promise<void> => {
+    if (e.target.value.length > 2) {
+      try {
+        await searchAirports(e.target.value).unwrap().then((response) => {
+          if (response) {
+            setAirportSearchData(response?.data);
+          }
+        });
+      } catch (error) {
+        console.error("Error searching airports:", error);
+      }
+    } else {
+      setAirportSearchData([]);
+    }
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -85,7 +115,7 @@ const AirportSearch: React.FC<AirportSearchProps> = ({
         >
           {value
             ? `${value.name} (${value.code})`
-            : "DAC, Hazrat Sha Jalal Intl Airport"}
+            : "Hazrat Shahjalal Intl Airport (DAC)"}
         </Typography>
       </Box>
       {isOpen && (
@@ -93,12 +123,11 @@ const AirportSearch: React.FC<AirportSearchProps> = ({
           sx={{
             position: "absolute",
             zIndex: 10,
-            width: "100%",
+            width: "98%",
             marginTop: 1,
             backgroundColor: "white",
             color: "#E34825",
-            boxShadow: 3,
-            border: "1px solid #ccc",
+            borderInline: "5px solid #E34825",
             maxHeight: "240px",
             overflowY: "auto",
           }}
@@ -109,7 +138,10 @@ const AirportSearch: React.FC<AirportSearchProps> = ({
               variant="outlined"
               placeholder="Search an airport..."
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e) => {
+                setSearchTerm(e.target.value)
+                handleSearch(e);
+              }}
               sx={{
                 "& .MuiOutlinedInput-root": {
                   backgroundColor: "white",
@@ -127,12 +159,57 @@ const AirportSearch: React.FC<AirportSearchProps> = ({
               }}
             />
           </Box>
-          <Box sx={{ backgroundColor: "#E34825" }}>
-            {filteredAirports.map((airport) => (
+            {/* Loader */}
+            {isLoading && (
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                padding: 2,
+              }}
+            >
+              <CircularProgress color="primary" size={24} sx={{ color: "#E34825" }} />
+            </Box>
+          )}
+
+          {/* Error Message */}
+          {isError && (
+            <Typography
+              sx={{
+                color: "red",
+                textAlign: "center",
+                padding: 2,
+              }}
+            >
+              Error fetching airports. Please try again.
+            </Typography>
+          )}
+          {airportSearchData?.length === 0 && !isLoading && (
+            <Typography
+              sx={{
+                color: "red",
+                textAlign: "center",
+                padding: 2,
+              }}
+            >
+             No airports found
+            </Typography>
+          )}
+          {!isLoading && 
+          <Box>
+          {airportSearchData?.map((airport) => (
               <MenuItem
                 key={airport.code}
                 onClick={() => {
-                  onChange(airport);
+                  // Transform the API result to match the expected Airport type
+                  const airportData: Airport = {
+                    code: airport.code,
+                    name: airport.result.name,
+                    cityName: airport.result.cityName,
+                    countryName: airport.result.countryName
+                  };
+                  onChange(airportData);
                   setIsOpen(false);
                 }}
                 sx={{
@@ -152,15 +229,18 @@ const AirportSearch: React.FC<AirportSearchProps> = ({
                     variant="body2"
                     sx={{ fontWeight: "medium", color: "#E34825" }}
                   >
-                    {airport.name}
+                    {airport?.result?.name}
                   </Typography>
-                  <Typography variant="caption" sx={{ color: "#E34825" }}>
-                    {airport.city}, {airport.country}
+                {airport?.result?.cityName && 
+                    <Typography variant="caption" sx={{ color: "#E34825" }}>
+                    {airport?.result?.cityName} , {airport?.result?.countryName}
                   </Typography>
+                }
                 </Box>
               </MenuItem>
             ))}
           </Box>
+          }
         </Box>
       )}
     </Box>
