@@ -7,7 +7,7 @@ import React, { useState } from "react";
 
 // Import the Airport type from airports.tsx
 import { Airport } from "../data/airports";
-import DateFilter from "./DateFilter";
+import Calender from "./Calender";
 
 export default function FlightSearch() {
   const [departureAirport, setDepartureAirport] =
@@ -16,9 +16,7 @@ export default function FlightSearch() {
     null
   );
 
-  const [departureDate, setDepatureDate] = useState<Date | null>(
-    new Date(2023, 7, 22)
-  );
+  const [departureDate, setDepatureDate] = useState<Date | null>(new Date());
   const [returnDate, setReturnDate] = useState<Date | null>(null);
 
   return (
@@ -63,11 +61,11 @@ export default function FlightSearch() {
           width: { lg: "420px" },
         }}
       >
-        <DateFilter
+        <Calender
           selectedDate={departureDate}
           setSelectedDate={setDepatureDate}
         />
-        <DateFilter
+        <Calender
           selectedDate={returnDate}
           setSelectedDate={setReturnDate}
           isReturnFlight={true}

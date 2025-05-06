@@ -6,7 +6,7 @@ import { StaticDatePicker } from "@mui/x-date-pickers/StaticDatePicker";
 import { SlCalender } from "react-icons/sl";
 import { format } from "date-fns";
 
-const DateFilter: React.FC<{
+const Calender: React.FC<{
   isReturnFlight?: boolean;
   selectedDate: Date | null;
   setSelectedDate: (date: Date | null) => void;
@@ -147,6 +147,7 @@ const DateFilter: React.FC<{
             openTo="day"
             value={selectedDate || null}
             onChange={handleDateChange}
+            minDate={new Date()} // Prevents selecting dates before today
           />
         </LocalizationProvider>
       </Popover>
@@ -154,4 +155,4 @@ const DateFilter: React.FC<{
   );
 };
 
-export default DateFilter;
+export default Calender;
