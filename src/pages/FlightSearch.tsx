@@ -71,7 +71,7 @@ const FlightSearch = () => {
             Error fetching flights. Please try again.
           </Typography>
         )}
-        {!isLoading && flights?.length === 0 && !isError && (
+        {!isLoading && !flights?.length && !isError && (
           <Typography
             sx={{
               textAlign: "center",
