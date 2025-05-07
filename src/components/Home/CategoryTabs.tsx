@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import AirplanemodeActiveIcon from "@mui/icons-material/AirplanemodeActive";
 import DomainIcon from "@mui/icons-material/Domain";
 import TravelExploreSharpIcon from "@mui/icons-material/TravelExploreSharp";

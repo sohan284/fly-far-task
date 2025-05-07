@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { Box, BottomNavigation, BottomNavigationAction } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
@@ -25,7 +25,11 @@ const BottomNav = () => {
     >
       <BottomNavigation
         value={value}
-        onChange={(event, newValue) => setValue(newValue)}
+        onChange={(event, newValue) => {
+          setValue(newValue)
+          console.log(event);
+          
+        }}
         sx={{
           height: "100%",
           maxWidth: "85vw",

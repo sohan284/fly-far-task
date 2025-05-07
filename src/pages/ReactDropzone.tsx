@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { Box, Typography, Paper, List, ListItem, ListItemText, ListItemAvatar, Avatar } from "@mui/material";
 import ImageIcon from "@mui/icons-material/Image";
