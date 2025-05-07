@@ -6,14 +6,11 @@ import {
   IconButton, 
   InputBase,
   Button,
-  Chip,
-  Divider,
   Menu,
   MenuItem
  } from "@mui/material";
 
 import { 
-  Map, 
   ArrowRightLeft, 
   Users, 
   Calendar, 
@@ -28,39 +25,63 @@ const SearchUpdateContainer = () => {
     const [tripType, setTripType] = useState('Round Trip');
     const [passengerCount, setPassengerCount] = useState('01');
     const [cabinClass, setCabinClass] = useState('Economy');
-    const [tripTypeAnchorEl, setTripTypeAnchorEl] = useState(null);
-    const [passengersAnchorEl, setPassengersAnchorEl] = useState(null);
-    const [cabinAnchorEl, setCabinAnchorEl] = useState(null);
+    const [tripTypeAnchorEl, setTripTypeAnchorEl] = useState<HTMLElement | null>(null);
+    const [passengersAnchorEl, setPassengersAnchorEl] = useState<HTMLElement | null>(null);
+    const [cabinAnchorEl, setCabinAnchorEl] = useState<HTMLElement | null>(null);
   
-    const handleTripTypeClick = (event) => {
+    interface TripTypeClickEvent {
+      currentTarget: HTMLElement;
+    }
+
+    const handleTripTypeClick = (event: TripTypeClickEvent) => {
       setTripTypeAnchorEl(event.currentTarget);
     };
   
-    const handlePassengersClick = (event) => {
+    interface PassengersClickEvent {
+      currentTarget: HTMLElement;
+    }
+
+    const handlePassengersClick = (event: PassengersClickEvent) => {
       setPassengersAnchorEl(event.currentTarget);
     };
   
-    const handleCabinClick = (event) => {
+    interface CabinClickEvent {
+      currentTarget: HTMLElement;
+    }
+
+    const handleCabinClick = (event: CabinClickEvent) => {
       setCabinAnchorEl(event.currentTarget);
     };
   
-    const handleTripTypeClose = (option) => {
+    interface TripTypeCloseOption {
+      option: string | null;
+    }
+
+    const handleTripTypeClose = (option: TripTypeCloseOption['option']) => {
       if (typeof option === 'string') {
-        setTripType(option);
+      setTripType(option);
       }
       setTripTypeAnchorEl(null);
     };
   
-    const handlePassengersClose = (option) => {
+    interface PassengersCloseOption {
+      option: string | null;
+    }
+
+    const handlePassengersClose = (option: PassengersCloseOption['option']) => {
       if (typeof option === 'string') {
-        setPassengerCount(option);
+      setPassengerCount(option);
       }
       setPassengersAnchorEl(null);
     };
   
-    const handleCabinClose = (option) => {
+    interface CabinCloseOption {
+      option: string | null;
+    }
+
+    const handleCabinClose = (option: CabinCloseOption['option']) => {
       if (typeof option === 'string') {
-        setCabinClass(option);
+      setCabinClass(option);
       }
       setCabinAnchorEl(null);
     };
@@ -92,7 +113,7 @@ const SearchUpdateContainer = () => {
         <Menu
           anchorEl={tripTypeAnchorEl}
           open={Boolean(tripTypeAnchorEl)}
-          onClose={() => handleTripTypeClose()}
+          onClose={() => handleTripTypeClose(null)}
         >
           <MenuItem onClick={() => handleTripTypeClose('Round Trip')}>Round Trip</MenuItem>
           <MenuItem onClick={() => handleTripTypeClose('One Way')}>One Way</MenuItem>
@@ -116,7 +137,7 @@ const SearchUpdateContainer = () => {
         <Menu
           anchorEl={passengersAnchorEl}
           open={Boolean(passengersAnchorEl)}
-          onClose={() => handlePassengersClose()}
+          onClose={() => handlePassengersClose(null)}
         >
           <MenuItem onClick={() => handlePassengersClose('01')}>01</MenuItem>
           <MenuItem onClick={() => handlePassengersClose('02')}>02</MenuItem>
@@ -140,7 +161,7 @@ const SearchUpdateContainer = () => {
         <Menu
           anchorEl={cabinAnchorEl}
           open={Boolean(cabinAnchorEl)}
-          onClose={() => handleCabinClose()}
+          onClose={() => handleCabinClose(null)}
         >
           <MenuItem onClick={() => handleCabinClose('Economy')}>Economy</MenuItem>
           <MenuItem onClick={() => handleCabinClose('Premium Economy')}>Premium Economy</MenuItem>
