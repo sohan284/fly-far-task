@@ -8,12 +8,21 @@ import FileUploaderRaw from "../pages/FileUploader.js";
 
 export const router = createBrowserRouter([
     {
-      path: "/",
-      element: <Layout />,
-      children: [
-        { path: "/", element: <Home /> },
-        { path: "/flight-search", element: <AirSearch /> },
-        { path: "/file-upload", element: <FileUploaderRaw /> },
-      ],
+        path: "/",
+        element: <Layout />,
+        children: [
+            {
+                path: '/',
+                element: <Home />
+            },
+            {
+                path: '/flight-search',
+                element:<AirSearch/>
+            },
+            {
+                path: '/file-upload',
+                element:<FileUploaderRaw/>
+            },
+        ]
     },
-  ], { basename: "/" });
+]);
