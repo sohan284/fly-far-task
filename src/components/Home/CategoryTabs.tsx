@@ -38,7 +38,7 @@ const CategoryTabs = () => {
       sx={{
         display: "flex",
         gap: 0.5,
-        marginTop: 7,
+        marginTop: {lg:7,xs:5},
         flexWrap: "wrap",
         justifyContent: { xs: "center", lg: "flex-start" },
       }}

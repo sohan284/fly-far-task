@@ -34,7 +34,6 @@ export default function FlightSearch() {
   
   const [departureDate, setDepatureDate] = useState<Date | null>(new Date());
   const [returnDate, setReturnDate] = useState<Date | null>(null);
-console.log(departureAirport , arrivalAirport);
 
   const handleFlightSearch = () =>{
     const searchData = {

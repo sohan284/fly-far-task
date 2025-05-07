@@ -10,13 +10,10 @@ const FlightSearch = () => {
   const navigate = useNavigate();
   const [flights, setFlights] = useState([]);
   const [searchFlights, { isLoading, isError }] = useSearchFlightsMutation();
-
+  const searchData = JSON.parse(
+    localStorage.getItem("flightSearchData") || "{}"
+  );
   const handleSearch = async () => {
-    const searchData = JSON.parse(
-      localStorage.getItem("flightSearchData") || "{}"
-    );
-    console.log(searchData);
-
     try {
       const result = await searchFlights(searchData).unwrap();
       setFlights(result?.data?.response);
@@ -32,12 +29,13 @@ const FlightSearch = () => {
       <Box
         sx={{
           width: { xs: "90vw", lg: "1180px" },
+          display:{lg:'block',xs:'none'},
           marginX: "auto",
         }}
       >
         <SearchHeader />
       </Box>
-      <SearchUpdateContainer />
+      <SearchUpdateContainer searchData={searchData} />
       <Box
         sx={{
           width: { xs: "90vw", lg: "1180px" },
@@ -73,7 +71,7 @@ const FlightSearch = () => {
             Error fetching flights. Please try again.
           </Typography>
         )}
-        {!isLoading && flights.length === 0 && !isError && (
+        {!isLoading && flights?.length === 0 && !isError && (
           <Typography
             sx={{
               textAlign: "center",
@@ -90,7 +88,7 @@ const FlightSearch = () => {
             <Button onClick={() => navigate("/")}>Back to home</Button>
           </Typography>
         )}
-        {flights.map((flight, index) => (
+        {flights?.map((flight, index) => (
           <Box key={index}>
             <FlightCard flight={flight} />
           </Box>

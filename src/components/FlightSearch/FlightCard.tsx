@@ -24,7 +24,7 @@ interface Flight {
 }
 
 const FlightCard = ({ flight }: { flight: Flight }) => {
-  const flightCity = flight.cityCount[0][0];
+  const flightCity = flight?.cityCount[0][0];
   
   return (
     <Box

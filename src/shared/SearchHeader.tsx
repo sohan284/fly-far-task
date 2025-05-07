@@ -8,10 +8,11 @@ const SearchHeader = () => {
   return (
     <Box
       sx={{
-        display: "flex",
+        display: {lg:'flex',xs:'grid',gridTemplateColumns:"repeat(2,1fr)"},
         maxWidth: "1180px",
         marginX: "auto",
         justifyContent: "center",
+        marginTop:2,
         width: { xs: "85vw", lg: "1180px" },
       }}
     >
@@ -34,7 +35,7 @@ const SearchHeader = () => {
       <Box
         sx={{
           width: "100%",
-          backgroundColor: "white",
+          backgroundColor: {lg:'white'},
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
@@ -43,7 +44,7 @@ const SearchHeader = () => {
           borderRadius: "3px",
         }}
       >
-        <Box sx={{ display: "flex", alignItems: "center" }}>
+        <Box sx={{    display: {lg:'flex',xs:'none'}, alignItems: "center" }}>
           <ErrorIcon
             sx={{ color: "#E34825", marginRight: 1, backgroundColor: "white" }}
           />
@@ -87,7 +88,6 @@ const SearchHeader = () => {
         </Box>
         <Box
           sx={{
-            display: { xs: "none", lg: "flex" },
 
           }}
         >   <BalanceButton/> </Box>

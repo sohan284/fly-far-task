@@ -24,6 +24,7 @@ const AirportSearch: React.FC<AirportSearchProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null); // Reference for the search input
   
   interface AirportResult {
     code: string;
@@ -69,6 +70,15 @@ const AirportSearch: React.FC<AirportSearchProps> = ({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const handleToggle = () => {
+    setIsOpen(!isOpen);
+    if (!isOpen) {
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 0);
+    }
+  };
+
   return (
     <Box
       ref={wrapperRef}
@@ -86,7 +96,7 @@ const AirportSearch: React.FC<AirportSearchProps> = ({
           alignItems: "center",
           cursor: "pointer",
         }}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={handleToggle} // Use the toggle handler
       >
         <Box
           sx={{
@@ -143,6 +153,7 @@ const AirportSearch: React.FC<AirportSearchProps> = ({
                 setSearchTerm(e.target.value)
                 handleSearch(e);
               }}
+              inputRef={inputRef} // Attach the ref to the input
               sx={{
                 "& .MuiOutlinedInput-root": {
                   backgroundColor: "white",
