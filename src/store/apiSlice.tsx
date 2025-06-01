@@ -21,14 +21,14 @@ export const apiSlice = createApi({
       query: (searchTerm) => ({
         url: "/admin/airports/search-suggestion",
         method: "POST",
-        body: { keyword: searchTerm }, // Pass the search term in the body
+        body: { keyword: searchTerm },
       }),
     }),
     searchFlights: builder.mutation({
       query: (data) => ({
         url: "/user/air-search",
         method: "POST",
-        body:  data , // Pass the search term in the body
+        body:  data , 
       }),
     }),
   }),
